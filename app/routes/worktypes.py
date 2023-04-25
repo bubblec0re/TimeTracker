@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.models import Worktype_ORM
 from app.schemas import Worktype, Worktype_create, Worktype_update
-from app.db import get_session
+from app.db_init import get_session
 
 
 ######### WORKTYPES

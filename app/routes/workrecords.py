@@ -2,7 +2,7 @@ import app.crud as crud
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.schemas import Workrecord, Workrecord_create, Workrecord_update
-from app.db import get_session
+from app.dependencies import get_session
 
 ########## WORKRECORDS
 workrecords_router = APIRouter()
