@@ -1,0 +1,40 @@
+# Visual Studio Code
+.vscode/
+
+# PyCharm
+.idea/
+*.iml
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+
+# Python
+venv/
+*.venv
+.env
+.virtualenv
+
+# Python
+*.egg-info/
+*.egg
+*.log
+*.coverage
+*.cache
+*.pytest_cache
+*.hypothesis/
+*.db
+*.sqlite3
+
+# 
+*.bak
+*.swp
+*.swo
+*.swn
+*.tmp
