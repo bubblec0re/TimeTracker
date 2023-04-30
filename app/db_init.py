@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
-
-db_url = "sqlite:///./timetracker.db"
+from .settings import db_url
 
 if __name__ == "__main__":
     from sqlalchemy.orm import Session
@@ -37,4 +36,4 @@ if __name__ == "__main__":
     session.add(demoWorkRecord3)
     session.commit()
 
-    print("created and populated the DB")
+    print(f"created and populated the DB at {db_url}")

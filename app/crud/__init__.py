@@ -12,3 +12,5 @@ from .workrecords import (
     update_workrecord,
     delete_workrecord,
 )
+
+from .users import create_user
