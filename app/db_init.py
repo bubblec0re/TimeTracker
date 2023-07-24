@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from .settings import db_url
+from .settings.settings import db_url
 
 if __name__ == "__main__":
     from sqlalchemy.orm import Session

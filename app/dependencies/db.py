@@ -1,11 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
-db_url = "sqlite:///./timetracker.db"
+from app.settings import db_url
 
 engine = create_engine(db_url, connect_args={"check_same_thread": False})
-
 Session = sessionmaker(engine, autocommit=False, autoflush=False)
+
 
 def get_session():
     session = Session()

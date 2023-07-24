@@ -5,7 +5,7 @@ from app.schemas import Workrecord, Workrecord_create, Workrecord_update
 from app.dependencies import get_session
 
 ########## WORKRECORDS
-workrecords_router = APIRouter(prefix='/workrecords')
+workrecords_router = APIRouter(prefix="/workrecords")
 
 
 @workrecords_router.get("/", response_model=list[Workrecord])

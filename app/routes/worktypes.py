@@ -7,7 +7,7 @@ from app.dependencies import get_session
 
 
 ######### WORKTYPES
-worktypes_router = APIRouter(prefix='/worktypes')
+worktypes_router = APIRouter(prefix="/worktypes")
 
 
 @worktypes_router.get("/", response_model=list[Worktype])
