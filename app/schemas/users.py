@@ -7,15 +7,11 @@ from pydantic import BaseModel
 
 class UserBase(BaseModel):
     name: str = "Default user"
+    email: str|None
 
 
 class UserCreate(UserBase):
-    email: str
     password: str
-
-
-class User(UserBase):
-    pass
 
 
 class UserLogin(UserBase):
