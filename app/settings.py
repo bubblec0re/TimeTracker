@@ -1,6 +1,6 @@
 from dotenv import dotenv_values
 
-envs = dotenv_values("app\\settings\\.env")
+envs = dotenv_values("app\\.env")
 
 try:
     db_url: str = envs["db_url"]  # type: ignore

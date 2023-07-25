@@ -43,7 +43,7 @@ def find_user(username: str, password: str, db: Session) -> User_ORM:
     return user
 
 
-def get_current_user(username: str, db: Session) -> dict[str, str]:
+def get_user_by_name(username: str, db: Session) -> dict[str, str]:
     q = db.query(User_ORM).filter(User_ORM.name == username)
     user = q.first()
     if not user:

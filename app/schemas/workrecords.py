@@ -1,5 +1,6 @@
 # PYDANTIC MODELS
-# work records: work type + description + start datetime and end datetime ('job, fixing errors, 2023.04.13 11:00, 2023.04.13 19:45')
+# work records: owner + work type + description + start datetime and end datetime
+#i. e. 'work, fixing errors, 2023.04.13 11:00, 2023.04.13 19:45'
 
 
 from datetime import datetime

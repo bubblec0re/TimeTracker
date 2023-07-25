@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 import app.crud as crud
-from app.dependencies import get_session
+from app.dependencies import get_session, get_token_payload
 from app.schemas import Workrecord, Workrecord_create, Workrecord_update
 
 ########## WORKRECORDS
@@ -20,9 +20,7 @@ async def workrecord(id: int, db: Session = Depends(get_session)):
 
 
 @workrecords_router.post("/new", response_model=Workrecord)
-async def add_workrecord(
-    new_workrecord: Workrecord_create, db: Session = Depends(get_session)
-) -> Workrecord:
+async def add_workrecord(new_workrecord: Workrecord_create, db: Session = Depends(get_session)) -> Workrecord:
     return crud.create_workrecord(new_workrecord, db)
 
 

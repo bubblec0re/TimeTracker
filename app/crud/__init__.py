@@ -13,4 +13,4 @@ from .workrecords import (
     delete_workrecord,
 )
 
-from .users import create_user, find_user, get_current_user
+from .users import create_user, find_user, get_user_by_name

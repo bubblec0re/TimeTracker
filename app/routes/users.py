@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 
 import app.crud as crud
-from app.dependencies import get_session, get_token_data
+from app.dependencies import get_session, get_token_payload, get_id_from_token
 from app.schemas import UserCreate, UserInfo
 from app.utils import create_access_token, create_refresh_token
 
@@ -18,18 +18,22 @@ async def register_user(new_user: UserCreate, db=Depends(get_session)):
 
 
 @users_router.post("/login")
-async def login(
-    form_data: OAuth2PasswordRequestForm = Depends(), db=Depends(get_session)
-):
+async def login(form_data: OAuth2PasswordRequestForm = Depends(),
+                db=Depends(get_session)):
     user = crud.find_user(form_data.username, form_data.password, db)
 
     return {
-        "access_token": create_access_token(user),
-        "refresh_token": create_refresh_token(user),
+        "access_token": create_access_token(user.name, user.id),  # type: ignore
+        "refresh_token": create_refresh_token(user.name, user.id),  # type: ignore
     }
 
 
-@users_router.get("/me", summary="Get details of currently logged in user", response_model=UserInfo)
-async def get_me(token: dict[str, Any] = Depends(get_token_data), db=Depends(get_session)):
-    user = crud.get_current_user(token["sub"], db)
+@users_router.get("/me", response_model=UserInfo)
+async def get_me(token: dict[str, Any] = Depends(get_token_payload),
+                 db=Depends(get_session)) -> UserInfo:
+    user = crud.get_user_by_name(token["sub"], db)
     return UserInfo(**user)
+
+@users_router.get("/me_id")
+async def get_me_id(id: int = Depends(get_id_from_token)) -> int:
+    return id
