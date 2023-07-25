@@ -2,8 +2,10 @@
 # work records: work type + description + start datetime and end datetime ('job, fixing errors, 2023.04.13 11:00, 2023.04.13 19:45')
 
 
-from pydantic import BaseModel, Field
 from datetime import datetime
+
+from pydantic import BaseModel, Field
+
 from .worktypes import Worktype
 
 

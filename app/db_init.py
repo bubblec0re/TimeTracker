@@ -1,17 +1,19 @@
 from sqlalchemy import create_engine
-from .settings.settings import db_url
+
+from .settings import db_url
 
 if __name__ == "__main__":
-    from sqlalchemy.orm import Session
-    from models.models import Base
     from datetime import datetime, timedelta
+
+    from models.models import Base
+    from sqlalchemy.orm import Session
 
     # create DB
     engine = create_engine(db_url)
     Base.metadata.create_all(bind=engine)
     session = Session(bind=engine)
 
-    from app.models import Worktype_ORM, Workrecord_ORM
+    from app.models import Workrecord_ORM, Worktype_ORM
 
     demoWorkType1 = Worktype_ORM(id=1, name="Demo work type 1")
     demoWorkType2 = Worktype_ORM(id=2, name="Demo work type 2")

@@ -1,10 +1,10 @@
-import app.crud as crud
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+
+import app.crud as crud
+from app.dependencies import get_session
 from app.models import Worktype_ORM
 from app.schemas import Worktype, Worktype_create, Worktype_update
-from app.dependencies import get_session
-
 
 ######### WORKTYPES
 worktypes_router = APIRouter(prefix="/worktypes")

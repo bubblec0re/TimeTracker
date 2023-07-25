@@ -1,17 +1,11 @@
-from app.models import User_ORM
-
 from datetime import datetime, timedelta
-from typing import Any
 
 from jose import jwt
 
-from app.settings import (
-    algorithm,
-    jwt_secret_key,
-    jwt_secret_refresh_key,
-    access_token_expire_minutes,
-    refresh_token_expire_minutes,
-)
+from app.models import User_ORM
+from app.settings import (access_token_expire_minutes, algorithm,
+                          jwt_secret_key, jwt_secret_refresh_key,
+                          refresh_token_expire_minutes)
 
 
 def create_access_token(subject: User_ORM) -> str:

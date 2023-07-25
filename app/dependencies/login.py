@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from pydantic import ValidationError
 
-from app.settings import jwt_secret_key, algorithm
+from app.settings import algorithm, jwt_secret_key
 
 reuseable_oauth = OAuth2PasswordBearer(tokenUrl="/users/login", scheme_name="JWT")
 
