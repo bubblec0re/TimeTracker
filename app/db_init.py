@@ -1,12 +1,10 @@
 from sqlalchemy import create_engine
 
-from .settings import db_url
-
-if __name__ == "__main__":
+def populate_db(db_url):
     from datetime import datetime, timedelta
-
-    from models.models import Base
     from sqlalchemy.orm import Session
+    
+    from app.models.models import Base
 
     # create DB
     engine = create_engine(db_url)
@@ -39,3 +37,7 @@ if __name__ == "__main__":
     session.commit()
 
     print(f"created and populated the DB at {db_url}")
+
+if __name__ == "__main__":
+    db_url = "sqlite:///./timetracker.db"
+    populate_db(db_url)
