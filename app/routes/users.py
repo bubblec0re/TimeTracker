@@ -20,7 +20,7 @@ async def register_user(new_user: UserCreate, db=Depends(get_session)):
 @users_router.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(),
                 db=Depends(get_session)):
-    user = crud.find_user(form_data.username, form_data.password, db)
+    user = crud.login_user(form_data.username, form_data.password, db)
 
     return {
         "access_token": create_access_token(user.name, user.id),  # type: ignore
@@ -31,7 +31,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(),
 @users_router.get("/me", response_model=UserInfo)
 async def get_me(token: dict[str, Any] = Depends(get_token_payload),
                  db=Depends(get_session)) -> UserInfo:
-    user = crud.get_user_by_name(token["sub"], db)
+    user = crud.find_user_by_name(token["sub"], db)
     return UserInfo(**user)
 
 @users_router.get("/me_id")

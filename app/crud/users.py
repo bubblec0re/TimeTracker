@@ -1,5 +1,3 @@
-from typing import Any
-
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -31,7 +29,7 @@ def create_user(username: str, email: str, password: str, db: Session) -> User_O
     return new_db_user
 
 
-def find_user(username: str, password: str, db: Session) -> User_ORM:
+def login_user(username: str, password: str, db: Session) -> User_ORM:
     q = db.query(User_ORM).filter(User_ORM.name == username)
     user = q.first()
     if not user:
@@ -43,7 +41,7 @@ def find_user(username: str, password: str, db: Session) -> User_ORM:
     return user
 
 
-def get_user_by_name(username: str, db: Session) -> dict[str, str]:
+def find_user_by_name(username: str, db: Session) -> dict[str, str]:
     q = db.query(User_ORM).filter(User_ORM.name == username)
     user = q.first()
     if not user:

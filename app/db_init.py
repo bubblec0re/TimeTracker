@@ -1,6 +1,10 @@
+
+# A script to quickly populate the DB with demo data
+
+
 from sqlalchemy import create_engine
 
-from .settings import db_url
+from settings import db_url
 
 if __name__ == "__main__":
     from datetime import datetime, timedelta
@@ -13,7 +17,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
     session = Session(bind=engine)
 
-    from app.models import Workrecord_ORM, Worktype_ORM
+    from models import Workrecord_ORM, Worktype_ORM
 
     demoWorkType1 = Worktype_ORM(id=1, name="Demo work type 1")
     demoWorkType2 = Worktype_ORM(id=2, name="Demo work type 2")
