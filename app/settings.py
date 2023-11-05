@@ -1,4 +1,4 @@
-from dotenv import dotenv_values, find_dotenv
+from dotenv import dotenv_values
 
 envs = dotenv_values("app/.env", verbose=True)
 
