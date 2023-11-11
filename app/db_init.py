@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 
-def populate_db(db_url):
+def populate_db(db_url: str):
     from datetime import datetime, timedelta
     from sqlalchemy.orm import Session
     
